@@ -18,7 +18,7 @@ namespace Snake
         public static int MaxSpeed = 15;
         static void Main(string[] args)
         {
-
+            //тенс
         }
 
         private static void Send()
