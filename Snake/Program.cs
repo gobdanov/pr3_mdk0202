@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Common.Classes;
+using Newtonsoft.Json;
 
 namespace Snake
 {
@@ -37,7 +39,7 @@ namespace Snake
                     sender.Send(bytes, bytes.Length, endPoint);
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"Отпраавил данные пользователю: {User.IPAddress}:{User.Port}")
+                    Console.WriteLine($"Отпраавил данные пользователю: {User.IPAddress}:{User.Port}");
                 }
                 catch (Exception ex)
                 {
@@ -174,7 +176,7 @@ namespace Snake
                         else
                         {
                             int Speed = 10 + (int)Math.Round(Snake.points.Count / 20f);
-                            if (Speed > MaxSpeed) = Speed = MaxSpeed;
+                            if (Speed > MaxSpeed) Speed = MaxSpeed;
                             if (Snake.direction == Snakes.Direction.Right)
                             {
                                 Snake.points[i] = new Snakes.Point() { X = Snake.points[i].X + Speed, Y = Snake.points[i].Y };
@@ -204,7 +206,7 @@ namespace Snake
 
                     if(Snake.direction != Snakes.Direction.Start)
                     {
-                        for(int i = 1, i < Snake.points.Count; i++)
+                        for(int i = 1; i < Snake.points.Count; i++)
                         {
                             if (Snake.points[0].X > Snake.points[i].X - 1 && Snake.points[0].X <= Snake.points[i].X + 1)
                             {
@@ -256,6 +258,37 @@ namespace Snake
                     }
                 }
                 Send();
+            }
+        }
+
+        public static void SaveLeaders()
+        {
+            string json = JsonConvert.SerializeObject(Leaders);
+            StreamWriter SW = new StreamWriter("./leaders.txt");
+            SW.WriteLine(json);
+            SW.Close();
+        }
+
+        public static void LoadLeaders()
+        {
+            if (File.Exists("./leaders.txt"))
+            {
+                StreamReader SR = new StreamReader("./leaders.txt");
+                string json = SR.ReadLine();
+                SR.Close();
+                if (!string.IsNullOrEmpty(json))
+                {
+                    Leaders = JsonConvert.DeserializeObject<List<Leaders>>(json);
+                }
+                else
+                {
+                    Leaders = new List<Leaders>();
+
+                }
+            }
+            else
+            {
+                Leaders = new List<Leaders>();
             }
         }
     }
