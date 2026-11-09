@@ -23,7 +23,7 @@ namespace Common.Classes
         {
             Left,
             Right,
-            Top,
+            Up,
             Down,
             Start
         }
