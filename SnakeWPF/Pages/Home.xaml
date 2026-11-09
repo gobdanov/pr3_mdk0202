@@ -1,0 +1,105 @@
+﻿<Page x:Class="SnakeWPF.Pages.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:SnakeWPF.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="Home">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/SnakeWPF;component/Image/background.jpeg"
+                        Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid>
+            <Grid Width="440"
+                  Height="300"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SnakeWPF;component/Image/background2.png"
+                                Stretch="Fill"/>
+                </Grid.Background>
+
+                <Label
+                    Content="Your IP address:"
+                    Margin="105,65,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="#59351D"
+                    FontFamily="Gabriola"
+                    FontSize="20"/>
+
+                <Label
+                    Content="Port:"
+                    Margin="265,65,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="#59351D"
+                    FontFamily="Gabriola"
+                    FontSize="20"/>
+
+                <Label
+                    Content="Your Name:"
+                    Margin="85,130,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Foreground="#59351D"
+                    FontFamily="Gabriola"
+                    FontSize="20"/>
+
+                <TextBox x:Name="ip"
+                         Margin="95,95,0,0"
+                         Width="165"
+                         Height="28"
+                         Text="192.168.0.107"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center"
+                         FontFamily="Gabriola"
+                         FontSize="17"/>
+
+                <TextBox x:Name="port"
+                         Margin="275,95,0,0"
+                         Width="65"
+                         Height="28"
+                         Text="5000"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center"
+                         FontFamily="Gabriola"
+                         FontSize="17"/>
+
+                <TextBox x:Name="name"
+                         Margin="95,160,0,0"
+                         Width="245"
+                         Height="28"
+                         Text="Alexashchka"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center"
+                         FontFamily="Gabriola"
+                         FontSize="17"/>
+
+                <Button Click="StartGame"
+                        Content="Game"
+                        Margin="95,0,0,65"
+                        Width="245"
+                        Height="32"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        FontFamily="Gabriola"
+                        FontSize="19"/>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
